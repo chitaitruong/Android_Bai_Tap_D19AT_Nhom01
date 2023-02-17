@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thong tin ca nhan"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:background="#ffff00"/>
+
+    <EditText
+        android:id="@+id/edtHT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhap ho va ten" />
+
+    <EditText
+        android:id="@+id/edtQQ"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhap que quan" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bang cap"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:background="#3399ff"/>
+    <RadioGroup
+        android:id="@+id/rgBC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <RadioButton
+            android:id="@+id/rbDH"
+            android:checked="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dai hoc"/>
+        <RadioButton
+            android:id="@+id/rbCD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cao dang"/>
+        <RadioButton
+            android:id="@+id/rbTC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trung cap"/>
+    </RadioGroup>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="So thich"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:background=" #3399ff"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <CheckBox
+            android:id="@+id/cbTT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="The thao"/>
+        <CheckBox
+            android:id="@+id/cbDS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Doc sach"/>
+        <CheckBox
+            android:id="@+id/cbXP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Xem phim"/>
+        <CheckBox
+            android:id="@+id/cbK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Khac"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thong tin khac"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:background=" #3399ff"/>
+    <EditText
+        android:id="@+id/edtTTK"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhap thong tin khac"
+        android:layout_weight="2"/>
+    <Button
+        android:id="@+id/btnGuiTT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gui thong tin"
+        android:layout_gravity="center"/>
+    <TextView
+        android:id="@+id/tvTTCN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="4"/>
+</LinearLayout>
