@@ -6,7 +6,10 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,6 +21,14 @@ public class MainActivity extends AppCompatActivity {
     Button btnDK;
     EditText edtTK, edtMK, edtNS, edtEmail;
     TextView tvTT;
+    //Bai 5
+    Button btnGuiTT;
+    EditText edtHT, edtQQ, edtTTK;
+    RadioGroup rgBC;
+    CheckBox cbTT, cbDS, cbXP, cbK;
+    TextView tvTTCN;
+    RadioButton rbDH, rbCD, rbTC;
+    //RadioButton rbBC;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,9 +38,12 @@ public class MainActivity extends AppCompatActivity {
         /*setContentView(R.layout.linear_layout_bai3);
         setControlBai3();
         setEventBai3();*/
-        setContentView(R.layout.linear_layout_bai4);
+        /*setContentView(R.layout.linear_layout_bai4);
         setControlBai4();
-        setEventBai4();
+        setEventBai4();*/
+        setContentView(R.layout.linear_layout_bai5);
+        setControlBai5();
+        setEventBai5();
     }
 
     private void setControlBai3() {
@@ -99,6 +113,54 @@ public class MainActivity extends AppCompatActivity {
                 tvTT.setText(tt);
                 tvTT.setBackgroundColor(Color.GREEN);
                 tvTT.setTextSize(30);
+            }
+        });
+    }
+    private void setControlBai5() {
+        edtHT = findViewById(R.id.edtHT);
+        edtQQ = findViewById(R.id.edtQQ);
+        edtTTK = findViewById(R.id.edtTTK);
+        rgBC = findViewById(R.id.rgBC);
+        rbDH = findViewById(R.id.rbDH);
+        rbCD = findViewById(R.id.rbCD);
+        rbTC = findViewById(R.id.rbTC);
+        cbTT = findViewById(R.id.cbTT);
+        cbDS = findViewById(R.id.cbDS);
+        cbXP = findViewById(R.id.cbXP);
+        cbK = findViewById(R.id.cbK);
+        btnGuiTT = findViewById(R.id.btnGuiTT);
+        tvTTCN = findViewById(R.id.tvTTCN);
+    }
+    private void setEventBai5() {
+        btnGuiTT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String ht = edtHT.getText().toString();
+                String qq = edtQQ.getText().toString();
+                /*int selectedId = rgBC.getCheckedRadioButtonId();
+                rbBC = (RadioButton) findViewById(selectedId);
+                String bc = rbBC.getText().toString();*/
+                String bc="";
+                if (rbDH.isChecked())
+                    bc = rbDH.getText().toString();
+                if (rbCD.isChecked())
+                    bc = rbCD.getText().toString();
+                if (rbTC.isChecked())
+                    bc = rbTC.getText().toString();
+                String st="So thich: \n";
+                if (cbTT.isChecked())
+                    st += "+ " + cbTT.getText().toString() + "\n";
+                if (cbDS.isChecked())
+                    st += "+ " + cbDS.getText().toString() + "\n";
+                if (cbXP.isChecked())
+                    st += "+ " + cbXP.getText().toString() + "\n";
+                if (cbK.isChecked())
+                    st += "+ " + cbK.getText().toString() + "\n";
+                String ttk = edtTTK.getText().toString();
+                String tt = "Ho va ten: "+ ht + "\n" + "Que quan: " + qq + "\n" + "Bang cap: " + bc + "\n" + st + "Thong tin khac: "+ttk;
+                tvTTCN.setText(tt);
+                tvTTCN.setBackgroundColor(Color.GREEN);
+                tvTTCN.setTextSize(15);
             }
         });
     }
