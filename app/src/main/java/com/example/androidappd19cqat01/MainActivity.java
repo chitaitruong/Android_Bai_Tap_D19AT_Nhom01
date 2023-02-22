@@ -13,6 +13,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    //main
+    Button btnBai1, btnBai2, btnBai3, btnBai4, btnBai5;
     //Bai 3
     Button btnCong, btnTru, btnNhan, btnChia;
     EditText edtSo1, edtSo2;
@@ -32,20 +34,66 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);
         //setContentView(R.layout.frame_layout_bai1);
         //setContentView(R.layout.linear_layout_bai2);
-        /*setContentView(R.layout.linear_layout_bai3);
-        setControlBai3();
-        setEventBai3();*/
-        /*setContentView(R.layout.linear_layout_bai4);
-        setControlBai4();
-        setEventBai4();*/
-        setContentView(R.layout.linear_layout_bai5);
-        setControlBai5();
-        setEventBai5();
+        //setContentView(R.layout.linear_layout_bai3);
+        setControl();
+        setEvent();
+        //setControlBai3();
+        //setEventBai3();
+        //setContentView(R.layout.linear_layout_bai4);
+        //setControlBai4();
+        //setEventBai4();
+        //setContentView(R.layout.linear_layout_bai5);
+        //setControlBai5();
+        //setEventBai5();
     }
-
+    private void setControl() {
+        btnBai1 = findViewById(R.id.btnBai1);
+        btnBai2 = findViewById(R.id.btnBai2);
+        btnBai3 = findViewById(R.id.btnBai3);
+        btnBai4 = findViewById(R.id.btnBai4);
+        btnBai5 = findViewById(R.id.btnBai5);
+    }
+    private void setEvent() {
+        btnBai1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setContentView(R.layout.frame_layout_bai1);
+            }
+        });
+        btnBai2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setContentView(R.layout.linear_layout_bai2);
+            }
+        });
+        btnBai3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setContentView(R.layout.linear_layout_bai3);
+                setControlBai3();
+                setEventBai3();
+            }
+        });
+        btnBai4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setContentView(R.layout.linear_layout_bai4);
+                setControlBai4();
+                setEventBai4();
+            }
+        });
+        btnBai5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setContentView(R.layout.linear_layout_bai5);
+                setControlBai5();
+                setEventBai5();
+            }
+        });
+    }
     private void setControlBai3() {
         edtSo1 = findViewById(R.id.edtSo1);
         edtSo2 = findViewById(R.id.edtSo2);
