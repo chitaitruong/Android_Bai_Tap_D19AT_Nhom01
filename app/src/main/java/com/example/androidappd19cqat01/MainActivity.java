@@ -2,6 +2,11 @@ package com.example.androidappd19cqat01;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +15,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -17,10 +23,13 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
     //main
@@ -52,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> dsPhuongTien = new ArrayList<>();
     ArrayAdapter adapterPhuongTien;
     AutoCompleteTextView actvTinh;
+    String[] dsTinh = {"Hà Nội", "Hồ Chí Minh", "Tây Ninh"};
+    ArrayAdapter adapterTinh;
     Button btnDangKy, btnThoat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -298,6 +309,88 @@ public class MainActivity extends AppCompatActivity {
         khoiTaoDsPhuongTien();
         adapterPhuongTien = new ArrayAdapter(this, android.R.layout.simple_list_item_1, dsPhuongTien);
         spnPhuongTien.setAdapter(adapterPhuongTien);
+        adapterTinh = new ArrayAdapter(this, android.R.layout.simple_list_item_1, dsTinh);
+        actvTinh.setAdapter(adapterTinh);
+        edtNgay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ChonNgay();
+            }
+        });
+        edtGio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ChonGio();
+            }
+        });
+        btnDangKy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String msg = "";
+                msg += edtHvT.getText().toString() + "\n";
+                msg += edtSDT.getText().toString() + "\n";
+                msg += actvTinh.getText().toString() + "\n";
+                msg += edtNgay.getText().toString() + "\n";
+                msg += edtGio.getText().toString() + "\n";
+                msg += (String)spnPhuongTien.getSelectedItem().toString();
+                Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                //DangKy(msg);
+            }
+        });
+        btnThoat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ThongBaoThoat();
+            }
+        });
+    }
+    private void ChonNgay() {
+        Calendar calendar = Calendar.getInstance();
+        int nam = calendar.get(Calendar.YEAR);
+        int thang = calendar.get(Calendar.MONTH);
+        int ngay = calendar.get(Calendar.DATE);
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                calendar.set(i,i1,i2);
+                edtNgay.setText(simpleDateFormat.format(calendar.getTime()));
+            }
+        }, nam, thang, ngay);
+        datePickerDialog.show();
+    }
+    private void ChonGio() {
+        Calendar calendar = Calendar.getInstance();
+        int gio = calendar.get(Calendar.HOUR);
+        int phut = calendar.get(Calendar.MINUTE);
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int i, int i1) {
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
+                calendar.set(0,0,0, i, i1);
+                edtGio.setText(simpleDateFormat.format(calendar.getTime()));
+            }
+        }, gio, phut, true);
+        timePickerDialog.show();
+    }
+    private void DangKy(String msg) {
+        Dialog dialog = new Dialog();
+    }
+    private void ThongBaoThoat() {
+        AlertDialog.Builder thongBaoThoat = new AlertDialog.Builder(this);
+        thongBaoThoat.setMessage("Bạn muốn thoát?");
+        thongBaoThoat.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+        thongBaoThoat.setPositiveButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
     }
     private void khoiTaoDsPhuongTien() {
         dsPhuongTien.add("Máy bay");
