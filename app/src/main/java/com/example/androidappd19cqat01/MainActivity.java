@@ -5,16 +5,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     //main
-    Button btnBai1, btnBai2, btnBai3, btnBai4, btnBai5;
+    Button btnBai1, btnBai2, btnBai3, btnBai4, btnBai5, btnBai6, btnBai7;
     //Bai 3
     Button btnCong, btnTru, btnNhan, btnChia;
     EditText edtSo1, edtSo2;
@@ -31,6 +41,18 @@ public class MainActivity extends AppCompatActivity {
     TextView tvTTCN;
     RadioButton rbDH, rbCD, rbTC;
     //RadioButton rbBC;
+    //bai 6
+    ImageView imgV1, imgV2;
+    ToggleButton tgBtn1;
+    Switch sw1;
+    //bai 7
+    EditText edtHvT, edtSDT;
+    EditText edtNgay, edtGio;
+    Spinner spnPhuongTien;
+    ArrayList<String> dsPhuongTien = new ArrayList<>();
+    ArrayAdapter adapterPhuongTien;
+    AutoCompleteTextView actvTinh;
+    Button btnDangKy, btnThoat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
         btnBai3 = findViewById(R.id.btnBai3);
         btnBai4 = findViewById(R.id.btnBai4);
         btnBai5 = findViewById(R.id.btnBai5);
+        btnBai6 = findViewById(R.id.btnBai6);
+        btnBai7 = findViewById(R.id.btnBai7);
     }
     private void setEvent() {
         btnBai1.setOnClickListener(new View.OnClickListener() {
@@ -91,6 +115,22 @@ public class MainActivity extends AppCompatActivity {
                 setContentView(R.layout.linear_layout_bai5);
                 setControlBai5();
                 setEventBai5();
+            }
+        });
+        btnBai6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setContentView(R.layout.baitap);
+                setControlBai6();
+                setEventBai6();
+            }
+        });
+        btnBai7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setContentView(R.layout.baitap7);
+                setControlBai7();
+                setEventBai7();
             }
         });
     }
@@ -211,5 +251,57 @@ public class MainActivity extends AppCompatActivity {
                 tvTTCN.setTextSize(15);
             }
         });
+    }
+    private void setControlBai6() {
+        tgBtn1 = findViewById(R.id.tgBtn1);
+        imgV1 = findViewById(R.id.imgV1);
+        sw1 = findViewById(R.id.sw1);
+        imgV2 = findViewById(R.id.imgV2);
+    }
+    private void setEventBai6() {
+        tgBtn1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (tgBtn1.isChecked()) {
+                    imgV1.setImageResource(R.drawable.img);
+                    Toast.makeText(MainActivity.this, tgBtn1.getTextOn().toString(), Toast.LENGTH_SHORT).show();
+                } else {
+                    imgV1.setImageResource(R.drawable.img_1);
+                    Toast.makeText(MainActivity.this, tgBtn1.getTextOff().toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        sw1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (sw1.isChecked()) {
+                    imgV2.setImageResource(R.drawable.img_3);
+                    Toast.makeText(MainActivity.this, sw1.getTextOn().toString(), Toast.LENGTH_SHORT).show();
+                } else {
+                    imgV2.setImageResource(R.drawable.img_2);
+                    Toast.makeText(MainActivity.this, sw1.getTextOff().toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+    private void setControlBai7(){
+        edtHvT = findViewById(R.id.edtHvT);
+        edtSDT = findViewById(R.id.edtSDT);
+        edtNgay = findViewById(R.id.edtNgay);
+        edtGio = findViewById(R.id.edtGio);
+        spnPhuongTien = findViewById(R.id.spnPhuongTien);
+        actvTinh = findViewById(R.id.actvTinh);
+        btnDangKy = findViewById(R.id.btnDangKy);
+        btnThoat = findViewById(R.id.btnThoat);
+    }
+    private void setEventBai7(){
+        khoiTaoDsPhuongTien();
+        adapterPhuongTien = new ArrayAdapter(this, android.R.layout.simple_list_item_1, dsPhuongTien);
+        spnPhuongTien.setAdapter(adapterPhuongTien);
+    }
+    private void khoiTaoDsPhuongTien() {
+        dsPhuongTien.add("Máy bay");
+        dsPhuongTien.add("Xe máy");
+        dsPhuongTien.add("Ô tô");
     }
 }

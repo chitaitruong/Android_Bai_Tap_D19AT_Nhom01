@@ -36,5 +36,17 @@
         android:text="Bai 5"
         android:id="@+id/btnBai5"
         tools:ignore="MissingConstraints" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bai 6"
+        android:id="@+id/btnBai6"
+        tools:ignore="MissingConstraints" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bai 7"
+        android:id="@+id/btnBai7"
+        tools:ignore="MissingConstraints" />
 
 </LinearLayout>
