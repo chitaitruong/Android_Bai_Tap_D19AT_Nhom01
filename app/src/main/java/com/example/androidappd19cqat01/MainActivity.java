@@ -334,7 +334,7 @@ public class MainActivity extends AppCompatActivity {
                 msg += edtGio.getText().toString() + "\n";
                 msg += (String)spnPhuongTien.getSelectedItem().toString();
                 Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
-                //DangKy(msg);
+                DangKy(msg);
             }
         });
         btnThoat.setOnClickListener(new View.OnClickListener() {
@@ -374,7 +374,18 @@ public class MainActivity extends AppCompatActivity {
         timePickerDialog.show();
     }
     private void DangKy(String msg) {
-        Dialog dialog = new Dialog();
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dangky);
+        TextView tv = dialog.findViewById(R.id.tvThongTin);
+        Button btn = dialog.findViewById(R.id.btnDangKy);
+        tv.setText(msg);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
     private void ThongBaoThoat() {
         AlertDialog.Builder thongBaoThoat = new AlertDialog.Builder(this);
@@ -385,12 +396,13 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-        thongBaoThoat.setPositiveButton("Không", new DialogInterface.OnClickListener() {
+        thongBaoThoat.setNegativeButton("Không", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
             }
         });
+        thongBaoThoat.show();
     }
     private void khoiTaoDsPhuongTien() {
         dsPhuongTien.add("Máy bay");
