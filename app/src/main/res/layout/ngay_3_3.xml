@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#DFCC27"
+        android:gravity="center"
+        android:text="Quản lý sinh viên"
+        android:textSize="30sp"/>
+    <ListView
+        android:id="@+id/lvDanhSach"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="#183BFD"
+        android:dividerHeight="3dp"/>
+</LinearLayout>
