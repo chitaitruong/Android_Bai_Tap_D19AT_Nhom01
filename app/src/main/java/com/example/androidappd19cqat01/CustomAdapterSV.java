@@ -34,14 +34,14 @@ public class CustomAdapterSV extends ArrayAdapter {
             convertView = LayoutInflater.from(context).inflate(resource, null);
             holder.ivGioiTinh = convertView.findViewById(R.id.ivGioiTinh);
             holder.tvHoTen = convertView.findViewById(R.id.tvHT);
-            holder.cbChon = convertView.findViewById(R.id.cbGioiTinh);
+            //holder.cbChon = convertView.findViewById(R.id.cbGioiTinh);
             convertView.setTag(holder);
         } else {
             holder = (Holder) convertView.getTag();
         }
         SinhVien sv = data.get(position);
         holder.tvHoTen.setText(sv.getName());
-        if (sv.getSex()) {
+        /*if (sv.getSex()) {
             holder.ivGioiTinh.setImageResource(R.drawable.baseline_man_50);
             holder.cbChon.setChecked(true);
         } else {
@@ -58,12 +58,12 @@ public class CustomAdapterSV extends ArrayAdapter {
                     finalHolder.ivGioiTinh.setImageResource(R.drawable.baseline_woman_50);
                 }
             }
-        });
+        });*/
         return convertView;
     }
     class Holder {
         ImageView ivGioiTinh;
         TextView tvHoTen;
-        CheckBox cbChon;
+        //CheckBox cbChon;
     }
 }

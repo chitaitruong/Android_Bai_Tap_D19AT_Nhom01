@@ -6,18 +6,18 @@
 
     <ImageView
         android:id="@+id/ivGioiTinh"
-        android:layout_width="36dp"
-        android:layout_height="37dp"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
         android:src="@drawable/baseline_person_24" />
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="20sp"
+        android:layout_height="25sp"
         android:layout_weight="1"
         android:text="Họ tên"
         android:gravity="center_vertical"
         android:id="@+id/tvHT"/>
-    <CheckBox
+    <!--<CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/cbGioiTinh"/>
+        android:id="@+id/cbGioiTinh"/>-->
 </LinearLayout>

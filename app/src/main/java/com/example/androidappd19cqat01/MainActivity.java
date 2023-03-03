@@ -71,6 +71,10 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<SinhVien> data_SV = new ArrayList<>();
     ArrayAdapter adapterDSSV;
     CustomAdapterSV customAdapterSV;
+    EditText edtMSV,edtTSV,edtNSSV;
+    RadioButton rbNam, rbNu;
+    Button btnAdd, btnDelete, btnEdit, btnExit;
+    SinhVien sv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -379,7 +383,8 @@ public class MainActivity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         int gio = calendar.get(Calendar.HOUR);
         int phut = calendar.get(Calendar.MINUTE);
-        TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this,
+                new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int i, int i1) {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
@@ -427,6 +432,15 @@ public class MainActivity extends AppCompatActivity {
     }
     private void setConTrolNgay33() {
         lvDanhSach = findViewById(R.id.lvDanhSach);
+        edtMSV = findViewById(R.id.edtMSV);
+        edtTSV = findViewById(R.id.edtTSV);
+        edtNSSV = findViewById(R.id.edtNSSV);
+        rbNam = findViewById(R.id.rbNam);
+        rbNu = findViewById(R.id.rbNu);
+        btnAdd = findViewById(R.id.btnAdd);
+        btnDelete = findViewById(R.id.btnDelete);
+        btnEdit = findViewById(R.id.btnEdit);
+        btnExit = findViewById(R.id.btnExit);
     }
     private void setEventNgay33() {
         khoitaoDSSV();
@@ -435,8 +449,10 @@ public class MainActivity extends AppCompatActivity {
         lvDanhSach.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String msg = data_SV.get(i).toString();
+                sv = data_SV.get(i);
+                String msg = sv.toString();
                 Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                chonSV();
             }
         });
         lvDanhSach.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -447,6 +463,35 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                themSinhVien();
+            }
+        });
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                data_SV.remove(sv);
+                customAdapterSV.notifyDataSetChanged();
+            }
+        });
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sv.setId(edtMSV.getText().toString());
+                sv.setName(edtTSV.getText().toString());
+                sv.setBirthDate(edtNSSV.getText().toString());
+                sv.setSex(rbNam.isChecked());
+                customAdapterSV.notifyDataSetChanged();
+            }
+        });
+        btnExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
     private void khoitaoDSSV() {
         data_SV.add(new SinhVien("N19DCAT007","Nguyễn Thế Bảo", true, "27/09/2001"));
@@ -455,6 +500,24 @@ public class MainActivity extends AppCompatActivity {
         data_SV.add(new SinhVien("N19DCAT008","Nguyễn Thành Băng", true, "27/09/2001"));
         data_SV.add(new SinhVien("N19DCAT086","Nguyễn Minh Thuận", true, "24/09/2001"));
         data_SV.add(new SinhVien("N19DCAT038","Từ Nguyễn Quốc Huy", true, "27/09/2001"));
-
+    }
+    private void themSinhVien() {
+        SinhVien sv = new SinhVien();
+        sv.setId(edtMSV.getText().toString());
+        sv.setName(edtTSV.getText().toString());
+        sv.setBirthDate(edtNSSV.getText().toString());
+        sv.setSex(rbNam.isChecked());
+        data_SV.add(sv);
+        customAdapterSV.notifyDataSetChanged();
+    }
+    private void chonSV() {
+        edtMSV.setText(sv.getId().toString());
+        edtTSV.setText(sv.getName().toString());
+        edtNSSV.setText(sv.getBirthDate().toString());
+        if (sv.getSex()) {
+            rbNam.setChecked(true);
+        } else {
+            rbNu.setChecked(true);
+        }
     }
 }
