@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/ivGioiTinh"
+        android:layout_width="36dp"
+        android:layout_height="37dp"
+        android:src="@drawable/baseline_person_24" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="20sp"
+        android:layout_weight="1"
+        android:text="Họ tên"
+        android:gravity="center_vertical"
+        android:id="@+id/tvHT"/>
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cbGioiTinh"/>
+</LinearLayout>

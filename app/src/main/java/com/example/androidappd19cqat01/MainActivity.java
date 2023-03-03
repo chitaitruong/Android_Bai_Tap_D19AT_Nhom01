@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -18,6 +19,7 @@ import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -33,7 +35,7 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
     //main
-    Button btnBai1, btnBai2, btnBai3, btnBai4, btnBai5, btnBai6, btnBai7;
+    Button btnBai1, btnBai2, btnBai3, btnBai4, btnBai5, btnBai6, btnBai7, btnBai8;
     //Bai 3
     Button btnCong, btnTru, btnNhan, btnChia;
     EditText edtSo1, edtSo2;
@@ -64,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
     String[] dsTinh = {"Hà Nội", "Hồ Chí Minh", "Tây Ninh"};
     ArrayAdapter adapterTinh;
     Button btnDangKy, btnThoat;
+    //ngay_3_3
+    ListView lvDanhSach;
+    ArrayList<SinhVien> data_SV = new ArrayList<>();
+    ArrayAdapter adapterDSSV;
+    CustomAdapterSV customAdapterSV;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         btnBai5 = findViewById(R.id.btnBai5);
         btnBai6 = findViewById(R.id.btnBai6);
         btnBai7 = findViewById(R.id.btnBai7);
+        btnBai8 = findViewById(R.id.btnBai8);
     }
     private void setEvent() {
         btnBai1.setOnClickListener(new View.OnClickListener() {
@@ -142,6 +150,14 @@ public class MainActivity extends AppCompatActivity {
                 setContentView(R.layout.baitap7);
                 setControlBai7();
                 setEventBai7();
+            }
+        });
+        btnBai8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setContentView(R.layout.ngay_3_3);
+                setConTrolNgay33();
+                setEventNgay33();
             }
         });
     }
@@ -408,5 +424,37 @@ public class MainActivity extends AppCompatActivity {
         dsPhuongTien.add("Máy bay");
         dsPhuongTien.add("Xe máy");
         dsPhuongTien.add("Ô tô");
+    }
+    private void setConTrolNgay33() {
+        lvDanhSach = findViewById(R.id.lvDanhSach);
+    }
+    private void setEventNgay33() {
+        khoitaoDSSV();
+        customAdapterSV = new CustomAdapterSV(this, R.layout.layout_sinhvien, data_SV);
+        lvDanhSach.setAdapter(customAdapterSV);
+        lvDanhSach.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String msg = data_SV.get(i).toString();
+                Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+            }
+        });
+        lvDanhSach.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                data_SV.remove(i);
+                customAdapterSV.notifyDataSetChanged();
+                return false;
+            }
+        });
+    }
+    private void khoitaoDSSV() {
+        data_SV.add(new SinhVien("N19DCAT007","Nguyễn Thế Bảo", true, "27/09/2001"));
+        data_SV.add(new SinhVien("N19DCAT067","Trương Chí Tài", true, "27/09/2001"));
+        data_SV.add(new SinhVien("N19DCAT074","Tạ Đức Tiến", true, "27/09/2001"));
+        data_SV.add(new SinhVien("N19DCAT008","Nguyễn Thành Băng", true, "27/09/2001"));
+        data_SV.add(new SinhVien("N19DCAT086","Nguyễn Minh Thuận", true, "24/09/2001"));
+        data_SV.add(new SinhVien("N19DCAT038","Từ Nguyễn Quốc Huy", true, "27/09/2001"));
+
     }
 }
