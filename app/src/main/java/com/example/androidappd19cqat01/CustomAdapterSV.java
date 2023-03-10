@@ -2,6 +2,7 @@ package com.example.androidappd19cqat01;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,7 +73,15 @@ public class CustomAdapterSV extends ArrayAdapter {
                 context.startActivity(intent);
             }
         });
-
+        viewHolder.btnCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:0965221516"));
+                context.startActivity(intent);
+            }
+        });
         return convertView;
     }
     private class ViewHolder {

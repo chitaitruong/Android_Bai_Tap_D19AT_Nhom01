@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -46,7 +47,18 @@ public class MainDetail extends AppCompatActivity {
             case android.R.id.home:
                 onBackPressed();
                 break;
+            case R.id.mnThongBao:
+                Toast.makeText(this, "Thong bao", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.mnPrint:
+                Toast.makeText(this, "In", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_detail,menu);
+        return super.onCreateOptionsMenu(menu);
     }
 }
