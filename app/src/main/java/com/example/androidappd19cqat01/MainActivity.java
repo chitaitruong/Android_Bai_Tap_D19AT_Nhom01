@@ -1,6 +1,7 @@
 package com.example.androidappd19cqat01;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -76,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
     RadioButton rbNam, rbNu;
     Button btnAdd, btnDelete, btnEdit, btnExit;
     SinhVien sv;
+    SearchView svSinhVien;
+    Button btnChonTC, btnBoChonTC, btnXoa;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -442,6 +445,10 @@ public class MainActivity extends AppCompatActivity {
         btnDelete = findViewById(R.id.btnDelete);
         btnEdit = findViewById(R.id.btnEdit);
         btnExit = findViewById(R.id.btnExit);
+        svSinhVien = findViewById(R.id.svSinhVien);
+        btnChonTC = findViewById(R.id.btnChonTC);
+        btnBoChonTC = findViewById(R.id.btnBoChonTC);
+        btnXoa = findViewById(R.id.btnXoa);
     }
     private void setEventNgay33() {
         khoitaoDSSV();
@@ -494,14 +501,46 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+        svSinhVien.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                customAdapterSV.search(newText);
+                //Toast.makeText(MainActivity.this, newText, Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+        btnChonTC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                customAdapterSV.chonTatCa();
+            }
+        });
+        btnBoChonTC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                customAdapterSV.boChonTatCa();
+            }
+        });
+        btnXoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                customAdapterSV.xoaDL();
+            }
+        });
     }
     private void khoitaoDSSV() {
-        data_SV.add(new SinhVien("N19DCAT007","Nguyễn Thế Bảo", true, "27/09/2001"));
-        data_SV.add(new SinhVien("N19DCAT067","Trương Chí Tài", true, "27/09/2001"));
-        data_SV.add(new SinhVien("N19DCAT074","Tạ Đức Tiến", true, "27/09/2001"));
-        data_SV.add(new SinhVien("N19DCAT008","Nguyễn Thành Băng", true, "27/09/2001"));
-        data_SV.add(new SinhVien("N19DCAT086","Nguyễn Minh Thuận", true, "24/09/2001"));
-        data_SV.add(new SinhVien("N19DCAT038","Từ Nguyễn Quốc Huy", true, "27/09/2001"));
+        data_SV.add(new SinhVien("N19DCAT007","Nguyễn Thế Bảo", true, "27/09/2001",true));
+        data_SV.add(new SinhVien("N19DCAT067","Trương Chí Tài", true, "27/09/2001",false));
+        data_SV.add(new SinhVien("N19DCAT074","Tạ Đức Tiến", true, "27/09/2001",false));
+        data_SV.add(new SinhVien("N19DCAT008","Nguyễn Thành Băng", true, "27/09/2001",false));
+        //data_SV.add(new SinhVien("N19DCAT086","Nguyễn Minh Thuận", true, "24/09/2001"));
+        //data_SV.add(new SinhVien("N19DCAT038","Từ Nguyễn Quốc Huy", true, "27/09/2001"));
     }
     private void themSinhVien() {
         SinhVien sv = new SinhVien();

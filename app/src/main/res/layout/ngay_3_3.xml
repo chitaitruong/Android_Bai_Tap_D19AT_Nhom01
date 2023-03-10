@@ -74,10 +74,37 @@
             android:text="Thoát"
             android:id="@+id/btnExit"/>
     </LinearLayout>
+    <androidx.appcompat.widget.SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/svSinhVien"/>
+
     <ListView
         android:id="@+id/lvDanhSach"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="#183BFD"
-        android:dividerHeight="3dp"/>
+        android:dividerHeight="3dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chon tat ca"
+            android:id="@+id/btnChonTC"/>
+        <Button
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bo chon tat ca"
+            android:id="@+id/btnBoChonTC"/>
+        <Button
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Xoa"
+            android:id="@+id/btnXoa"/>
+    </LinearLayout>
 </LinearLayout>

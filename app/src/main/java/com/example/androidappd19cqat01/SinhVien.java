@@ -7,8 +7,23 @@ public class SinhVien implements Serializable {
     private String name;
     private Boolean sex;
     private String birthDate;
-    //private Boolean isSelected;
+    private Boolean isSelected;
 
+    public Boolean getSelected() {
+        return isSelected;
+    }
+
+    public SinhVien(String id, String name, Boolean sex, String birthDate, Boolean isSelected) {
+        this.id = id;
+        this.name = name;
+        this.sex = sex;
+        this.birthDate = birthDate;
+        this.isSelected = isSelected;
+    }
+
+    public void setSelected(Boolean selected) {
+        isSelected = selected;
+    }
 
     public SinhVien() {
     }
@@ -18,6 +33,7 @@ public class SinhVien implements Serializable {
         this.name = name;
         this.sex = sex;
         this.birthDate = birthDate;
+        this.isSelected = false;
     }
 
     public String getId() {
