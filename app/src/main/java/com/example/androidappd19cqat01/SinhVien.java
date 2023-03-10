@@ -1,6 +1,8 @@
 package com.example.androidappd19cqat01;
 
-public class SinhVien {
+import java.io.Serializable;
+
+public class SinhVien implements Serializable {
     private String id;
     private String name;
     private Boolean sex;

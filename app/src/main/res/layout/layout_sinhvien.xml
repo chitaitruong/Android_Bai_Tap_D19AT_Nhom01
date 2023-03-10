@@ -2,12 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/sinhvienLine">
 
     <ImageView
         android:id="@+id/ivGioiTinh"
-        android:layout_width="50sp"
-        android:layout_height="50sp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@drawable/baseline_person_24" />
     <TextView
         android:layout_width="wrap_content"
@@ -16,8 +17,27 @@
         android:text="Họ tên"
         android:gravity="center_vertical"
         android:id="@+id/tvHT"/>
-    <!--<CheckBox
+    <ImageButton
+        android:focusable="false"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/cbGioiTinh"/>-->
+        android:src="@drawable/baseline_call_24"
+        android:id="@+id/btnCall"/>
+    <ImageButton
+        android:focusable="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_message_24"
+        android:id="@+id/btnMessage"/>
+    <ImageButton
+        android:focusable="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_info_24"
+        android:id="@+id/btnInfo"/>
+    <CheckBox
+        android:focusable="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cbGioiTinh"/>
 </LinearLayout>
