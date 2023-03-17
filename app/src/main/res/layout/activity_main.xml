@@ -1,58 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
-    <Button
+    android:id="@+id/drawerLayout"
+    tools:context=".MainActivity">
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Bai 1"
-        android:id="@+id/btnBai1"
-        tools:ignore="MissingConstraints" />
-    <Button
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ViewFlipper
+            android:id="@+id/vf"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/Content"/>
+    </LinearLayout>
+    <com.google.android.material.navigation.NavigationView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Bai 2"
-        android:id="@+id/btnBai2"
-        tools:ignore="MissingConstraints" />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Bai 3"
-        android:id="@+id/btnBai3"
-        tools:ignore="MissingConstraints" />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Bai 4"
-        android:id="@+id/btnBai4"
-        tools:ignore="MissingConstraints" />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Bai 5"
-        android:id="@+id/btnBai5"
-        tools:ignore="MissingConstraints" />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Bai 6"
-        android:id="@+id/btnBai6"
-        tools:ignore="MissingConstraints" />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Bai 7"
-        android:id="@+id/btnBai7"
-        tools:ignore="MissingConstraints" />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Bai 8"
-        android:id="@+id/btnBai8"
-        tools:ignore="MissingConstraints" />
+        android:layout_height="match_parent"
+        app:menu="@menu/menu_navigation"
+        app:headerLayout="@layout/layout_header"
+        android:layout_gravity="start"
+        android:id="@+id/navigation" />
 
-</LinearLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>
