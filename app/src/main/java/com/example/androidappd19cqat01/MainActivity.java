@@ -115,6 +115,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (drawerToggle.onOptionsItemSelected(item)) {
             return true;
@@ -148,7 +157,6 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.mnSetting:
                         Toast.makeText(MainActivity.this, "Cai dat", Toast.LENGTH_SHORT).show();
-                        Toast.makeText(MainActivity.this, "Dang nhap", Toast.LENGTH_SHORT).show();
                         if (settingFragment == null) {
                             settingFragment = new SettingFragment();
                         }
