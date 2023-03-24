@@ -12,6 +12,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -87,14 +88,20 @@ public class MainActivity extends AppCompatActivity {
 //    SinhVien sv;
 //    SearchView svSinhVien;
 //    Button btnChonTC, btnBoChonTC, btnXoa;
-    DrawerLayout drawerLayout;
+    /*DrawerLayout drawerLayout;
     ActionBarDrawerToggle drawerToggle;
     ViewFlipper viewFlipper;
     NavigationView navigationView;
     DangNhapFragment dangNhapFragment = null;
-    SettingFragment settingFragment = null;
+    SettingFragment settingFragment = null;*/
+    //ngay 24/03/2023
+    EditText edtPW, edtUN;
+    Button btnDN;
+    CheckBox cbNMK;
+    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        sharedPreferences = getSharedPreferences("MATKHAU",MODE_PRIVATE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setControl();
@@ -113,8 +120,44 @@ public class MainActivity extends AppCompatActivity {
 //        //setControlBai5();
 //        //setEventBai5();
     }
+    private void setControl() {
+        edtUN = findViewById(R.id.edtUN);
+        edtPW = findViewById(R.id.edtPW);
+        cbNMK = findViewById(R.id.cbNMK);
+        btnDN = findViewById(R.id.btnDN);
+    }
+    private void setEvent() {
+        docMatKhau();
+        btnDN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String username = edtUN.getText().toString();
+                String password = edtPW.getText().toString();
+                if (username.equals("admin") && password.equals("270901")) {
+                    Toast.makeText(MainActivity.this, "Dang nhap thanh cong 200", Toast.LENGTH_SHORT).show();
+                    if (cbNMK.isChecked()) {
+                        // luu username và mat khau
+                        luuMatKhau(username, password);
+                    }
+                } else {
+                    Toast.makeText(MainActivity.this, "Dang nhap thai bai 403", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
 
-    @Override
+    private void docMatKhau() {
+        edtUN.setText(sharedPreferences.getString("username",""));
+        edtPW.setText(sharedPreferences.getString("password",""));
+    }
+
+    private void luuMatKhau(String username, String password) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("username", username);
+        editor.putString("password", password);
+        editor.commit();
+    }
+    /*@Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
@@ -177,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
         viewFlipper.addView(view2);
         viewFlipper.setAutoStart(true);
         viewFlipper.setFlipInterval(10000);
-    }
+    }*/
 //    private void setControl() {
 //        btnBai1 = findViewById(R.id.btnBai1);
 //        btnBai2 = findViewById(R.id.btnBai2);

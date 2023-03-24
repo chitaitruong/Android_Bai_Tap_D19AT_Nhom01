@@ -1,31 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawerLayout"
+    android:orientation="vertical"
     tools:context=".MainActivity">
-    <LinearLayout
+    <ImageView
+        android:layout_gravity="center"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/avatar"/>
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <ViewFlipper
-            android:id="@+id/vf"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"/>
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/Content"/>
-    </LinearLayout>
-    <com.google.android.material.navigation.NavigationView
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:text="Dang nhap"/>
+    <EditText
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:menu="@menu/menu_navigation"
-        app:headerLayout="@layout/layout_header"
-        android:layout_gravity="start"
-        android:id="@+id/navigation" />
+        android:layout_height="wrap_content"
+        android:hint="Nhap username"
+        android:id="@+id/edtUN"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhap password"
+        android:inputType="textPassword"
+        android:id="@+id/edtPW"/>
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Nho mat khau"
+        android:id="@+id/cbNMK"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Dang nhap"
+        android:id="@+id/btnDN"/>
 
 
-</androidx.drawerlayout.widget.DrawerLayout>
+</LinearLayout>
